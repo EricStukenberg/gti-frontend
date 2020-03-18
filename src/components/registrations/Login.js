@@ -7,9 +7,7 @@ class Login extends Component {
     this.state = { 
       name: '',
       email: '',
-      winPer:'',
       password: '',
-      score: '',
       errors: ''
      };
   }
@@ -31,8 +29,9 @@ const headers = {'Content-Type':'application/json',
                  Accept: 'application/json'
                 }
     
-axios.post('http://localhost:3001/login', {user}, {headers: headers})
+axios.post('http://localhost:3001/login', {user},{withCredentials: true}, {headers: headers})
     .then(response => {
+      
       if (response.data.logged_in) {
         this.props.handleLogin(response.data)
         this.redirect()

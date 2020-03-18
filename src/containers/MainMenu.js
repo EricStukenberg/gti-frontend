@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
-import Skeleton from '@yisheng90/react-loading';
+import './MianMenu.scss';
 
 
 class MainMenu extends Component {
-
+    state = {
+        user: this.props.user
+      }
+      handleClick = (e) =>  {
+        //   e.preventDefualt();
+     }
+      
     render(){
+        console.log(this.props.user)
+
         return(
             <div>
-                <p>MAIN MENU</p>
+                <span className='menu-label'>Main Menu</span>
+                <div className='menu-container'>
+                    <span className='menu-item--active' onClick={this.handleClick(this.state.activeItem)}>Start Game</span>
+
+
+
+
+                </div>
             </div>
         )
     }

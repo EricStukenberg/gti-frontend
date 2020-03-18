@@ -23,8 +23,9 @@ class App extends Component{
 
   loginStatus = () => {
     axios.get('http://localhost:3001/logged_in', 
-   {withCredentials: false})
+   {withCredentials: true})
     .then(response => {
+      console.log(response.data)
       if (response.data.logged_in) {
         this.handleLogin(response)
       } else {
@@ -39,6 +40,7 @@ class App extends Component{
       isLoggedIn: true,
       user: data.user
     })
+    console.log(this.state)
   }
 handleLogout = () => {
     this.setState({
@@ -51,7 +53,7 @@ handleLogout = () => {
     if(this.state.isLoggedIn) {
       return (
         <div> 
-          <MainMenu /> 
+          <MainMenu user={this.state.user} /> 
         </div>
       )
     } else {
