@@ -1,51 +1,39 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import { api } from "../../services/api";
 import {Link} from 'react-router-dom'
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      name: '',
-      email: '',
-      password: '',
-      errors: ''
+      errors: '',
+      fields: {
+        username: '',
+        email: '',
+        password: '',
+      }
      };
   }
-handleChange = (event) => {
-    const {name, value} = event.target
-    this.setState({
-      [name]: value
+handleChange = (e) => {
+  const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
+
+  this.setState({
+      fields: newFields
     })
   };
-  handleSubmit = (event) => {
-    event.preventDefault()
-    const {username, email, password} = this.state
-    let user = {
-      name: username,
-      email: email,
-      password: password
-    }
-const headers = {'Content-Type':'application/json',
-                 Accept: 'application/json'
-                }
-    
-axios.post('http://localhost:3001/login', {user},{withCredentials: true}, {headers: headers})
-    .then(response => {
-      
-      if (response.data.logged_in) {
-        this.props.handleLogin(response.data)
-        this.redirect()
+  handleSubmit = (e) => {
+    e.preventDefault();
+  
+    api.auth.login(this.state.fields).then(res => {
+      if(!res.error) {
+        this.props.handleLogin(res);
+        this.props.history.push('/menu');
       } else {
-        this.setState({
-          errors: response.data.errors
-        })
+        this.setState({errors: res})
       }
-    })
-    .catch(error => console.log('api errors:', error))
-  };
-redirect = () => {
-    this.props.history.push('/')
+     })
+
   }
+
 handleErrors = () => {
     return (
       <div>

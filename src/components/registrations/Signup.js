@@ -1,45 +1,40 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import { api } from "../../services/api";
+
 class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      name: '',
-      email: '',
-      password: '',
-      password_confirmation: '',
-      errors: ''
+      errors: '',
+      fields: {
+        username: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+      }
      };
   }
-handleChange = (event) => {
-    const {name, value} = event.target
-    this.setState({
-      [name]: value
-    })
+handleChange = (e) => {
+  console.log(e.target.value)
+  const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
+
+  this.setState({
+      fields: newFields
+  })
+  console.log(this.state)
   };
   handleSubmit = (event) => {
     event.preventDefault()
-    const {name, email, password, password_confirmation} = this.state
+    const {username, email, password, password_confirmation} = this.state.fields
     let user = {
-      name: name,
+      username: username,
       email: email,
       winPer: 0,
       password: password,
       password_confirmation: password_confirmation,
       score: 0
     }
-    // axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
-    //   .then(response => {
-    //     if (response.data.status === 'created') {
-    //       this.props.handleLogin(response.data)
-    //       this.redirect()
-    //     } else {
-    //       this.setState({
-    //         errors: response.data.errors
-    //       })
-    //     }
-    //   })
-    //   .catch(error => console.log('api errors:', error))
+
     fetch('http://localhost:3001/users', {
       method: 'post',
       headers: {'Content-Type':'application/json',
@@ -49,11 +44,17 @@ handleChange = (event) => {
     
     }).then((res) => res.json()).then((data)=> {
       console.log(data)
+      api.auth.login(this.state.fields).then(res => {
+        if(!res.error) {
+          this.props.handleLogin(res);
+          this.props.history.push('/menu');
+        } else {
+          this.setState({errors: res})
+        }
+       })
     });
   }
-redirect = () => {
-    this.props.history.push('/')
-  }
+
 handleErrors = () => {
     return (
       <div>
@@ -65,7 +66,7 @@ handleErrors = () => {
     )
   }
 render() {
-    const {name, email, password, password_confirmation} = this.state
+    const {username, email, password, password_confirmation} = this.state
 return (
       <div>
         <h1>Sign Up</h1>
@@ -73,8 +74,8 @@ return (
           <input
             placeholder="username"
             type="text"
-            name="name"
-            value={this.state.name}
+            name="username"
+            value={username}
             onChange={this.handleChange}
           />
           <input
@@ -104,6 +105,7 @@ return (
           </button>
       
         </form>
+
       </div>
     );
   }
