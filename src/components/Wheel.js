@@ -1,3 +1,5 @@
+// Code from https://codesandbox.io/s/spinning-wheel-game-q3216
+
 import React from 'react';
 
 import './wheel.css';
@@ -15,8 +17,11 @@ export default class Wheel extends React.Component {
     if (this.state.selectedItem === null) {
       const selectedItem = Math.floor(Math.random() * this.props.items.length);
       this.setState({ selectedItem });
+
       if (this.props.onSelectItem) {
         this.props.onSelectItem(selectedItem);
+
+        
       }
     } else {
       this.setState({ selectedItem: null });

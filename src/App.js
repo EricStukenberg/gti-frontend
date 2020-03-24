@@ -31,6 +31,8 @@ class App extends Component{
         isLoggedIn: true,
         user: user
           });
+      this.getAPIToken()
+
     });
 
     }
@@ -39,7 +41,6 @@ class App extends Component{
 
   handleLogin = (data) => {
     console.log(data)
-    this.getAPIToken()
     this.setState({
       isLoggedIn: true,
       user: data
@@ -84,7 +85,7 @@ class App extends Component{
 
               <Route exact path='/game' render={props =>
                 <Game {...props} 
-                  user={this.state.user} />}/>
+                  user={this.state.user} apiToken={this.state.apiToken}/>}/>
 
             </Switch>
           </Router>
@@ -96,7 +97,7 @@ class App extends Component{
           <Router>
             <Switch>
               <Route exact path='/' >
-                <Home loggedInStatus={this.state.isLoggedIn}/>
+                <Home loggedInStatus={this.state.isLoggedIn} />
               </Route>
               <Route exact path='/login' 
               render={props => <Login {...props} 
