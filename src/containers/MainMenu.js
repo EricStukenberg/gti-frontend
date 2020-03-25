@@ -1,20 +1,9 @@
 import React, { Component } from 'react';
 import { api } from "../services/api";
-
 import './MianMenu.scss';
-import { makeStyles } from '@material-ui/core/styles';
-import LinearProgress from '@material-ui/core/LinearProgress';
-// import {BrowserRouter as Router, Switch, Route, useHistory, Redirect} from 'react-router-dom';
 
+const DB_URL = "http://localhost:3001/"
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: '100%',
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
 
 
 class MainMenu extends Component {
@@ -32,7 +21,8 @@ class MainMenu extends Component {
                 { text: 'Friends' },
                 { text: 'Profile' },
             ],
-            user: this.props.user
+            user: {},
+            players: []
         }
         // this.handleClick = this.handleClick.bind(this)
 
@@ -44,7 +34,10 @@ class MainMenu extends Component {
           this.props.history.push("/login");
         } else {
             api.auth.getCurrentUser().then(user => {
-                // console.log(user);
+              this.setState({
+                user: user
+                  });
+                this.getPlayers()
                 if (user.error) {
                     this.props.history.push("/login");
                 }
@@ -75,6 +68,71 @@ class MainMenu extends Component {
         }
       }
 
+
+
+      displayCard() {
+        if(this.state.activeItemPosition === 60) {
+          return <h2>Tutorial</h2>
+
+        } else if(this.state.activeItemPosition === 120) {
+          console.log(this.state.players)
+        const usernames = this.state.players.map((user, index) => <li key={index}> {user.username} {user.email}<button>Add</button></li> ) 
+           return ( 
+            <div> 
+              <h2>Friends</h2>
+              <h2>Players</h2>
+              <ul>{usernames}</ul> 
+            </div>
+           )
+
+
+        } else if(this.state.activeItemPosition === 180) {
+          const user = this.state.user
+          let winPer = ((user.score ) / user.winPer) * 10
+          if(Number.isNaN(winPer)) {
+            winPer = 0
+          }
+          return (
+            <div className="profile-card">
+              <h3>{user.username} </h3>
+              <h3>{user.email}</h3> 
+              <h4>Score: {user.score}</h4>
+              <h4> Percentage of Correct Answers: {winPer}% </h4>
+              <button className="profile-button" onClick={(e) => this.deleteUser(e)}>Delete Profile</button> 
+            </div>
+
+          )
+
+        } 
+      }
+
+      deleteUser = (e) => {
+        console.log("CLICKED DELETE USER")
+        fetch(DB_URL+'users/'+this.state.user.id, {
+          method: "delete"
+        }).then((res) => {
+          return res.json()
+        }).catch((err) => {
+          console.error(err)
+        });
+        this.props.logout()
+        this.props.history.push("/")
+
+      }
+
+      getPlayers() {
+        fetch(DB_URL+'users')
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+           this.setState({
+             players: data.users
+           })
+          });
+
+
+      }
       
       
     render(){
@@ -82,10 +140,12 @@ class MainMenu extends Component {
         return (
 
             <div>
-                <span className='menu-label'>Main Menu</span>
                 <div className='menu-container'>
                     <span className='menu-item--active' style={{ top: this.state.activeItemPosition, backgroundColor: this.state.activeItemColor }}/>
                     { menuItems }
+                </div>
+                <div>
+                    {this.displayCard()}
                 </div>
           </div>
         )

@@ -3,14 +3,13 @@ import { api } from "./services/api";
 import Home from './components/Home'
 import Login from './components/registrations/Login'
 import Signup from './components/registrations/Signup'
-import {BrowserRouter as Router, Switch, Route, useHistory, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import MainMenu from './containers/MainMenu';
 import NavBar from './components/NavBar';
 import Game from './containers/Game';
 
 
 import './App.css';
-const DB_URL = "http://localhost:3001/"
 
 
 class App extends Component{
@@ -26,7 +25,6 @@ class App extends Component{
     const token = localStorage.getItem("token");
     if(token) {
       api.auth.getCurrentUser().then(user => {
-      console.log(user)
       this.setState({
         isLoggedIn: true,
         user: user
@@ -81,7 +79,7 @@ class App extends Component{
             <Switch>
               <Route exact path='/menu' render={props =>
                 <MainMenu {...props} 
-                  user={this.state.user} />}/>
+                  user={this.state.user} logout={this.handleLogout}/>}/>
 
               <Route exact path='/game' render={props =>
                 <Game {...props} 
@@ -117,27 +115,3 @@ class App extends Component{
 
 
 export default App;
-
-
-
-// render() {
-//   return (
-//     <div className="App">
-//       <Router>
-//         <Switch>
-//           <Route path='/'>
-//             {this.state.isLoggedIn ? <MainMenu /> : <Home />}
-
-//           </Route>
-//           <Route path='/login'>
-
-//           </Route>
-//           <Route path='/signup'>
-
-//           </Route>
-//         </Switch>
-//       </Router>
-
-//     </div>
-//   );
-//   }

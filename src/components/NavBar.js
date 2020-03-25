@@ -22,7 +22,6 @@ const useStyles = makeStyles(theme => ({
 
 const NavBar = (props) => {
   const classes = useStyles();
-  console.log("nav props", props)
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -30,6 +29,7 @@ const NavBar = (props) => {
           <Typography variant="h6" className={classes.title}>
             Trivia Quizzer
           </Typography>
+          <Button color="inherit"  component={Link} to="/menu">Main Menu</Button>
           <Button color="inherit"  onClick={props.logout} component={Link} to="/">Logout</Button>
         </Toolbar>
       </AppBar>
