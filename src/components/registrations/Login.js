@@ -49,9 +49,10 @@ render() {
     const {username, email, password} = this.state
 return (
       <div>
-        <h1>Log In</h1>
-        <form onSubmit={this.handleSubmit}>
+        <h1 className='login-h1'>Log In</h1>
+        <form className='login-container' onSubmit={this.handleSubmit}>
           <input
+            className='login-inputs'
             placeholder="username"
             type="text"
             name="username"
@@ -59,6 +60,7 @@ return (
             onChange={this.handleChange}
           />
           <input
+            className='login-inputs'
             placeholder="email"
             type="text"
             name="email"
@@ -66,16 +68,17 @@ return (
             onChange={this.handleChange}
           />
           <input
+            className='login-inputs'
             placeholder="password"
             type="password"
             name="password"
             value={password}
             onChange={this.handleChange}
           />
-         <button placeholder="submit" type="submit">
+         <button className='login-button' placeholder="submit" type="submit">
             Log In
           </button>
-          <div>
+          <div className='login-link'>
             or <Link to='/signup'>sign up</Link>
           </div>
           

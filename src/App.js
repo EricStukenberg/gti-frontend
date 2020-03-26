@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { api } from "./services/api";
-import Home from './components/Home'
+import Home from './components/registrations/Home'
 import Login from './components/registrations/Login'
 import Signup from './components/registrations/Signup'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import MainMenu from './containers/MainMenu';
 import NavBar from './components/NavBar';
 import Game from './containers/Game';
+import './components/registrations/registration.css';
+
 
 
 import './App.css';

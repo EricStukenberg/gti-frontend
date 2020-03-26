@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { api } from "../services/api";
 import Wheel from '../components/Wheel.js';
 import Round from '../components/Round';
+import FlashMassage from 'react-flash-message';
+import './MianMenu.scss';
+
 const API_BASE_URL = 'https://opentdb.com/'
 const DB_URL = "http://localhost:3001/"
 class Game extends Component {
@@ -11,6 +14,7 @@ class Game extends Component {
         indexes: [],
         questions: [], 
         selected: false,
+        correct: false,
         score: 0,
     }
     componentDidMount() {
@@ -90,8 +94,14 @@ class Game extends Component {
 
     handleCorrectAnswer = () => {
         this.setState({
-            score: this.state.score+10
+            score: this.state.score+10,
+            correct: true
         })
+        setTimeout(() => {
+            this.setState({
+                correct: false
+            })
+        }, 2000)
 
     }
     handleOutOfQuestion = (count) => {
@@ -125,13 +135,19 @@ class Game extends Component {
     render (){
         return (
             <div>
-                <h2>{this.props.user.username}</h2>
-                <h3>Score: {this.state.score}</h3>
+                <div className="score-card">
+                    <h2>{this.props.user.username}</h2>
+                    <h3>Score: {this.state.score}</h3>
+                </div>
                 {this.state.selected ? <Round handleOutOfQuestion={this.handleOutOfQuestion} 
                                 handleCorrectAnswer={this.handleCorrectAnswer} score={this.state.score} 
                                 user={this.props.user} questions={this.state.questions} /> : 
                                 <Wheel items={this.state.categories} onSelectItem={this.handleSelect}/>}
+                {this.state.correct? <FlashMassage duration={2000} persistOnHover={true}>
+                    <h4 className='flash-h4'>Correct</h4>
+                </FlashMassage> : null}
             </div>
+ 
         );
     }
 }

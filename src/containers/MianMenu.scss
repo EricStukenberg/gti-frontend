@@ -13,7 +13,7 @@ html, body {
   margin: 0;
 }
 
-h2 {
+.h2-1 {
   font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
   margin: auto;
   padding: 0;
@@ -21,12 +21,72 @@ h2 {
 
 }
 
+.flash-h4 {
+  text-align: center;
+  color: green;
+  font-size: 22px;
+}
+// containers 
+.question-container {
+  margin-left: 40px;
+}
+
+.questions-checks {
+  margin-left: 50px;
+}
+
+.score-card {
+  max-width: 20%;
+  background-color: rgba($color: #bf7b0f, $alpha: 1.0);
+  border-radius: 5px;
+  margin: auto;
+  margin-left: 40px;
+  padding-top: 1px;
+  padding-left: 10px;
+  padding-bottom: 1px;
+  margin-top: 20px;
+  box-shadow: 8px 8px 8px 0px rgba($color: #171616, $alpha: 1.0);
+  width: 18%;
+
+
+}
+
+.player-container {
+  margin-left: 33%;
+}
+
+
 .profile-card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
   margin: auto;
   margin-bottom: 40px;
   text-align: center;
+}
+
+// Buttons 
+
+.player-add-button {
+  margin-left: 20px;
+  border-radius: 45px;
+  opacity: .5;
+  background-color: rgb(237, 235, 229);
+  font-size: 13px;
+  text-align: right;
+}
+
+.submit-button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 20%;
+  margin-top: 20px;
+  font-size: 18px;
 }
 
 .profile-button {

@@ -72,15 +72,16 @@ class MainMenu extends Component {
 
       displayCard() {
         if(this.state.activeItemPosition === 60) {
-          return <h2>Tutorial</h2>
+          return <h2 className='h2-1'>Tutorial</h2>
 
         } else if(this.state.activeItemPosition === 120) {
           console.log(this.state.players)
-        const usernames = this.state.players.map((user, index) => <li key={index}> {user.username} {user.email}<button>Add</button></li> ) 
+        const usernames = this.state.players.map((user, index) => <li className="player-container" key={index}> {user.username} {user.email}
+                                                                  <button className="player-add-button">+</button></li> ) 
            return ( 
             <div> 
-              <h2>Friends</h2>
-              <h2>Players</h2>
+              <h2 className='h2-1'>Friends</h2>
+              <h2 className='h2-1'>Players</h2>
               <ul>{usernames}</ul> 
             </div>
            )
@@ -88,7 +89,7 @@ class MainMenu extends Component {
 
         } else if(this.state.activeItemPosition === 180) {
           const user = this.state.user
-          let winPer = ((user.score ) / user.winPer) * 10
+          let winPer = Math.round(((user.score ) / user.winPer) * 10)
           if(Number.isNaN(winPer)) {
             winPer = 0
           }
@@ -126,6 +127,7 @@ class MainMenu extends Component {
           return res.json();
         })
         .then((data) => {
+
            this.setState({
              players: data.users
            })

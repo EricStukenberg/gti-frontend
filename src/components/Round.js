@@ -80,12 +80,12 @@ class Round extends Component {
                                                         value={ item } selectedOption={this.state.selectedOption} 
                                                         handleOptionChange={this.handleOptionChange}/>)
         return ( 
-            <div>
+            <div className='question-container'>
                 <p>{this.state.currQuestion.question}</p>
                 <form onSubmit={this.handleFormSubmit}> 
                     {answers}
                     <div className="form-group">
-                    <button className="btn btn-primary mt-2" type="submit">
+                    <button className="submit-button" type="submit">
                         Submit
                     </button>
                     </div>

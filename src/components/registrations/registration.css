@@ -1,0 +1,69 @@
+.welcome {
+    text-align: center;
+    font-size: 35px;
+    margin: 5px auto;
+    margin-top: 40px;
+    border: 1px solid #888;
+    width: 60%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-image: linear-gradient(to bottom right, rgb(235, 114, 8), rgb(184, 142, 2));
+    border-radius: 10px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+}
+
+.links {
+    padding-left: 30px;
+}
+
+.login-h1 {
+    text-align: center;
+}
+
+
+
+.login-container {
+    border: .5px solid #888;
+    background-image: linear-gradient(to bottom right, rgb(235, 114, 8), rgb(184, 142, 2));
+    /* background-color: #bf7e0f; */
+    margin-left: 30%;
+    width: 40%;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+
+
+}
+
+.login-inputs {
+    display: block;
+    font-size:11px;
+    padding:4px 2px;
+    border:solid 1px #aacfe4;
+    width:50%;
+    margin:2px 0 20px 10px;
+    margin-left: 25%;
+    margin-top: 10%;
+    border-radius: 2px;
+
+}
+
+.login-button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 20%;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    border-radius: 2px;
+}
+
+.login-link {
+    margin-bottom: 8px;
+}
