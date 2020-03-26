@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { api } from "../services/api";
-
+import he from 'he';
 class Round extends Component {
     state = {
         currQuestion: {}, 
@@ -75,13 +75,13 @@ class Round extends Component {
 
 
     render (){
-   
+        console.log(this.state.currQuestion.question)
         const answers = this.state.allAnswerOptions.map((item, index ) => <Answers key={index} 
                                                         value={ item } selectedOption={this.state.selectedOption} 
-                                                        handleOptionChange={this.handleOptionChange}/>)
+                                                        handleOptionChange={this.handleOptionChange}/>)                          
         return ( 
             <div className='question-container'>
-                <p>{this.state.currQuestion.question}</p>
+                {this.state.currQuestion.question? <p> {he.decode(this.state.currQuestion.question)}</p> : null}
                 <form onSubmit={this.handleFormSubmit}> 
                     {answers}
                     <div className="form-group">
@@ -110,7 +110,7 @@ function Answers(props) {
               value={props.value}
               className="form-check-input"
             />
-            {props.value}
+            {he.decode(props.value)}
           </label>
         </div>
     )

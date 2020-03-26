@@ -18,6 +18,7 @@
   --spinning-duration: 4s;
   --reset-duration: 0.25s;
 
+
   display: block;
   position: relative;
   box-sizing: content-box;
@@ -30,6 +31,7 @@
   border: solid var(--wheel-color) 3px;
   border-radius: 50%;
   user-select: none;
+  margin-bottom: 40px;
 }
 
 /* Triangle de sélection = 1 rose +  1 blanc */
@@ -110,7 +112,7 @@
   /* texte */
   color: var(--neutral-color);
   text-align: right;
-  padding: 0 25px 0 50px;
+  padding: 0 20px 0 50px;
   font-family: var(--wheel-font);
 }
 

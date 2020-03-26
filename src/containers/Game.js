@@ -115,7 +115,6 @@ class Game extends Component {
             user: newUser
 
         })
-        console.log("NEWUSER", newUser)
         fetch(DB_URL + 'users/' + this.state.user.id, {
             method: 'PUT',
             body: JSON.stringify(newUser),
