@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { api } from "../services/api";
+import wheelImage from "./Images/Wheel.png";
+
+
 import './MianMenu.scss';
 
 const DB_URL = "http://localhost:3001/"
@@ -72,7 +75,19 @@ class MainMenu extends Component {
 
       displayCard() {
         if(this.state.activeItemPosition === 60) {
-          return <h2 className='h2-1'>Tutorial</h2>
+          return (
+            <div> 
+              <h2 className='h2-1'>Tutorial</h2>
+              <p className='description'> To start click on Start game.</p>
+              <img className='wheel-img' src={wheelImage} className="img-1" alt="Wheel" />
+              <p className='description'> Then click on the wheel to randomly select a category then play the game.</p>
+
+            </div>
+
+
+
+            )
+
 
         } else if(this.state.activeItemPosition === 120) {
           console.log(this.state.players)
@@ -168,6 +183,4 @@ function MenuItem(props) {
   }
 
 export default MainMenu
-/* 
-                    <LinearProgress />
-                <LinearProgress color="secondary" /> */
+

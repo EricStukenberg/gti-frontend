@@ -52,6 +52,9 @@ class Round extends Component {
                 console.log("YOU GUESSED CORRECT")
                 this.props.handleCorrectAnswer();
                 
+            } else {
+                console.log("Correct Answer", this.state.currQuestion.correct_answer)
+                this.props.handleIncorrectAnswer();
             }
 
             if(this.props.questions[this.state.index + 1] != null) {

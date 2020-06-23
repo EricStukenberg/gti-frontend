@@ -109,7 +109,7 @@
   transform-origin: center left;
   transform: translateY(-50%) rotate(calc(var(--item-nb) * (360deg / var(--nb-item, 1))));
 
-  /* texte */
+  /* text */
   color: var(--neutral-color);
   text-align: right;
   padding: 0 20px 0 50px;

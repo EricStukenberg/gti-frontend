@@ -15,6 +15,8 @@ class Game extends Component {
         questions: [], 
         selected: false,
         correct: false,
+        incorrect: false,
+        correctAnswer: "",
         score: 0,
     }
     componentDidMount() {
@@ -104,6 +106,18 @@ class Game extends Component {
         }, 2000)
 
     }
+
+    handleIncorrectAnswer = (correctAnswer) => {
+        this.setState({
+            incorrect: true
+        })
+        setTimeout(() => {
+            this.setState({
+                incorrect: false
+            })
+        }, 2000)
+
+    }
     handleOutOfQuestion = (count) => {
         console.log("COUNT", count)
         let newUser = this.state.user
@@ -139,12 +153,18 @@ class Game extends Component {
                     <h3>Score: {this.state.score}</h3>
                 </div>
                 {this.state.selected ? <Round handleOutOfQuestion={this.handleOutOfQuestion} 
-                                handleCorrectAnswer={this.handleCorrectAnswer} score={this.state.score} 
+                                handleCorrectAnswer={this.handleCorrectAnswer}
+                                handleIncorrectAnswer={this.handleIncorrectAnswer}
+                                score={this.state.score} 
                                 user={this.props.user} questions={this.state.questions} /> : 
                                 <Wheel items={this.state.categories} onSelectItem={this.handleSelect}/>}
                 {this.state.correct? <FlashMassage duration={2000} persistOnHover={true}>
                     <h4 className='flash-h4'>Correct</h4>
-                </FlashMassage> : null}
+                </FlashMassage> :null}
+                {this.state.incorrect? <FlashMassage duration={2000} persistOnHover={true}>
+                    <h4 className='flash-h4-incorrect'>Incorrect</h4>
+                </FlashMassage> :  null}
+
             </div>
  
         );
