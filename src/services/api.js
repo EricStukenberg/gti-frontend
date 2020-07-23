@@ -15,7 +15,7 @@ const headers = () => {
 
 
 const login = data => {
-  return fetch(`${API_ROOT}/auth`, {
+  return fetch(`${API_ROOT}/authenticate`, {
     method: "POST",
     // mode: "no-cors",
     headers: headers(),
