@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^7.1.2",
     "@yisheng90/react-loading": "^1.0.4",
     "active-menu": "^0.1.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "he": "^1.2.0",
     "node-sass": "^4.13.1",
     "react": "^16.13.0",
