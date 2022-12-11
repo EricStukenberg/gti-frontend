@@ -1127,6 +1127,13 @@
     react-is "^16.8.0"
     react-transition-group "^4.3.0"
 
+"@material-ui/icons@^4.9.1":
+  version "4.11.3"
+  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-4.11.3.tgz#b0693709f9b161ce9ccde276a770d968484ecff1"
+  integrity sha512-IKHlyx6LDh8n19vzwH5RtHIOHl9Tu90aAAxcbWME6kp4dmvODM3UvOHJeMIDzUbd4muuJKHmlNoBN+mDY4XkBA==
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+
 "@material-ui/styles@^4.9.6":
   version "4.9.6"
   resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-4.9.6.tgz#924a30bf7c9b91af9c8f19c12c8573b8a4ecd085"
@@ -1763,6 +1770,13 @@ actioncable@^5.0.0:
   version "5.2.4"
   resolved "https://registry.yarnpkg.com/actioncable/-/actioncable-5.2.4.tgz#744f555f16d87413044f81074a9cc4d2cf416502"
   integrity sha512-2mCP0eKTjxtDWNPqP6xPar9a5i8F/pndrTHJGU6QDS1a77B+DlPEWzPRiyNAaNEGMY/9yTBOP3CXhR+8/zaVQw==
+
+active-menu@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/active-menu/-/active-menu-0.1.2.tgz#2b18b5baa8982937354b211c5a8bbbe50a0c91ef"
+  integrity sha512-0uFOlNBf20TnqIrljBo+uBrxh0P0QlRrdqtSQqVX81HtyhrIhz0MFPfuG88e1h3+339IabMlqmphu9fh1ta7wA==
+  dependencies:
+    html-sourcery "0.1.5"
 
 address@1.1.2, address@^1.0.1:
   version "1.1.2"
@@ -5161,6 +5175,11 @@ html-minifier-terser@^5.0.1:
     param-case "^2.1.1"
     relateurl "^0.2.7"
     terser "^4.3.9"
+
+html-sourcery@0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/html-sourcery/-/html-sourcery-0.1.5.tgz#d842ae47d3b6bbad02835b06226f86a9e12e0eb6"
+  integrity sha512-BYStKdTT6R167GJoAxWTnUFTab6B9awz8icnJQLuGLMCU9ScKKhJjoxrPB1d0OVeyipvwCvj9aKIRQ6VLBlhLw==
 
 html-webpack-plugin@4.0.0-beta.11:
   version "4.0.0-beta.11"
@@ -8859,9 +8878,9 @@ qs@6.7.0:
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
 qs@~6.5.2:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
-  integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.3.tgz#3aeeffc91967ef6e35c0e488ef46fb296ab76aad"
+  integrity sha512-qxXIEh4pCGfHICj1mAJQ2/2XVZkjCDTcEgfoSQxc/fYivUZxTkk7L3bDBJSoNrEzXI17oUO5Dp07ktqE5KzczA==
 
 query-string@^4.1.0:
   version "4.3.4"
@@ -8989,6 +9008,13 @@ react-error-overlay@^6.0.6:
   version "6.0.6"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.6.tgz#ac4d9dc4c1b5c536c2c312bf66aa2b09bfa384e2"
   integrity sha512-Yzpno3enVzSrSCnnljmr4b/2KUQSMZaPuqmS26t9k4nW7uwJk6STWmH9heNjPuvqUTO3jOSPkHoKgO4+Dw7uIw==
+
+react-flash-message@^1.0.2:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-flash-message/-/react-flash-message-1.0.8.tgz#25146e1a229d91e0f40d714344b366c210f4c271"
+  integrity sha512-XND1LenvTjZI9SvGgGxF74SDZih1fS+iN304/Lhwd/vukTyBLJ9PrOvJehdf9KkxdWtK3fxmQl+c/cpZktyMVg==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0:
   version "16.13.0"
